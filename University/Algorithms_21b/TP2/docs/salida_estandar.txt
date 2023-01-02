@@ -1,0 +1,62 @@
+########################################################################## lista enlazada
+$ g++ -Wall -Wextra -O3 mainList.cpp -o mainList; ./mainList
+
+-inicia
+
+Qty de busquedas en 10 segundos [llist]
+Aleatoria:  2607
+Secuencial: 2644
+
+-termina
+
+########################################################################## arbol binario
+
+$ g++ -Wall -Wextra -O3 mainTree.cpp -o mainTree; ./mainTree
+
+-inicia
+
+Qty de busquedas en 10 segundos [tree]
+Aleatoria[rec]:  7236477
+Aleatoria[it]:   7488920
+Secuencial[rec]: 3056
+Secuencial[it]:  2985
+
+-termina
+
+########################################################################## arbol rojinegro
+
+$ g++ -O3 mainRN.cpp -o rbtree; ./rbtree
+
+-inicia
+
+Se construye el arbol
+Test#1: [busqueda recursiva] en 10s...
+ Cantidad de busquedas: 5521377
+Test#2: [busqueda iterativa] en 10s...
+ Cantidad de busquedas: 5459903
+
+Construye arbol secuencial
+Test#1: [busqueda recursiva] en 10s...
+ Cantidad de busquedas: 6666415
+Test#2: [busqueda iterativa] en 10s...
+ Cantidad de busquedas: 6659812
+
+-termina
+
+########################################################################## tabla hash
+
+$ g++ -O3 mainHash.cpp -o hash; ./hash
+
+-inicia
+
+Se construye la tabla aleatoria con 1000000 entradas
+Test [busqueda] en 10s...
+ Cantidad de busquedas: 8322188
+
+Se construye la tabla secuencial con 1000000 entradas
+Test [busqueda] en 10s...
+ Cantidad de busquedas: 8339295
+
+-termina
+
+########################################################################## findoc

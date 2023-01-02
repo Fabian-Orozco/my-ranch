@@ -1,0 +1,150 @@
+
+Arreglo A | 50000
+
+   Selection duration: 860897000 ns == 0.860s
+   Insertion duration: 270311000 ns == 0.270s
+   MergeSort duration: 15989000 ns == 0.15s
+
+Arreglo B | 100000
+
+   Selection duration: 3421248000 ns == 3.3421s
+   Insertion duration: 1142405000 ns == 1.1142s
+   MergeSort duration: 27002000 ns == 0.27s
+
+Arreglo C | 150000
+
+   Selection duration: 8008298000 ns == 8.8008s
+   Insertion duration: 2502885000 ns == 2.2502s
+   MergeSort duration: 44001000 ns == 0.44s
+
+Arreglo D | 200000
+
+   Selection duration: 14443171000 ns == 14.14443s
+   Insertion duration: 5330842000 ns == 5.5330s
+   MergeSort duration: 65006000 ns == 0.65s
+
+------------------------------------------------------------------
+
+Arreglo A | 50000
+
+   Selection duration: 910078000 ns == 0.910s
+   Insertion duration: 280203000 ns == 0.280s
+   MergeSort duration: 17002000 ns == 0.17s
+
+Arreglo B | 100000
+
+   Selection duration: 3582397000 ns == 3.3582s
+   Insertion duration: 1155672000 ns == 1.1155s
+   MergeSort duration: 41005000 ns == 0.41s
+
+Arreglo C | 150000
+
+   Selection duration: 7964239000 ns == 7.7964s
+   Insertion duration: 2493513000 ns == 2.2493s
+   MergeSort duration: 47017000 ns == 0.47s
+
+Arreglo D | 200000
+
+   Selection duration: 14180624000 ns == 14.14180s
+   Insertion duration: 4512321000 ns == 4.4512s
+   MergeSort duration: 68005000 ns == 0.68s
+
+------------------------------------------------------------------
+Arreglo A | 50000
+
+   Selection duration: 888003000 ns == 0.888s
+   Insertion duration: 286723000 ns == 0.286s
+   MergeSort duration: 16002000 ns == 0.16s
+
+Arreglo B | 100000
+
+   Selection duration: 3759118000 ns == 3.3759s
+   Insertion duration: 1184323000 ns == 1.1184s
+   MergeSort duration: 30003000 ns == 0.30s
+
+Arreglo C | 150000
+
+   Selection duration: 8231235000 ns == 8.8231s
+   Insertion duration: 2762864000 ns == 2.2762s
+   MergeSort duration: 53003000 ns == 0.53s
+
+Arreglo D | 200000
+
+   Selection duration: 15790870000 ns == 15.15790s
+   Insertion duration: 5316658000 ns == 5.5316s
+   MergeSort duration: 79043000 ns == 0.79s
+
+SIN OPTIMIZAR
+------------------------------------------------------------------
+Arreglo A | 50000
+
+   Selection duration: 2815166000 ns == 2.2815s
+   Insertion duration: 1861857000 ns == 1.1861s
+   MergeSort duration: 23001000 ns == 0.23s
+
+Arreglo B | 100000
+
+   Selection duration: 11425992000 ns == 11.11425s
+   MergeSort duration: 38004000 ns == 0.38s
+
+Arreglo C | 150000
+
+   Selection duration: 26074356000 ns == 26.26074s
+   Insertion duration: 17989416000 ns == 17.17989s
+   MergeSort duration: 51148000 ns == 0.51s
+
+Arreglo D | 200000
+
+   Selection duration: 44334768000 ns == 44.44334s
+   Insertion duration: 55209885000 ns == 55.55209s
+   MergeSort duration: 71001000 ns == 0.71s
+
+------------------------------------------------------------------
+Arreglo A | 50000
+
+   Selection duration: 2910950000 ns == 2.2910s
+   Insertion duration: 1822724000 ns == 1.1822s
+   MergeSort duration: 21002000 ns == 0.21s
+
+Arreglo B | 100000
+
+   Selection duration: 11355577000 ns == 11.11355s
+   Insertion duration: 11657077000 ns == 11.11657s
+   MergeSort duration: 37002000 ns == 0.37s
+
+Arreglo C | 150000
+
+   Selection duration: 25206198000 ns == 25.25206s
+   Insertion duration: 15297323000 ns == 15.15297s
+   MergeSort duration: 73004000 ns == 0.73s
+
+Arreglo D | 200000
+
+   Selection duration: 48836854000 ns == 48.48836s
+   Insertion duration: 54142637000 ns == 54.54142s
+   MergeSort duration: 74568000 ns == 0.74s
+
+------------------------------------------------------------------
+Arreglo A | 50000
+
+   Selection duration: 2863683000 ns == 2.2863s
+   Insertion duration: 1661555000 ns == 1.1661s
+   MergeSort duration: 20002000 ns == 0.20s
+
+Arreglo B | 100000
+
+   Selection duration: 11229642000 ns == 11.11229s
+   Insertion duration: 6643971000 ns == 6.6643s
+   MergeSort duration: 41154000 ns == 0.41s
+
+Arreglo C | 150000
+
+   Selection duration: 25138167000 ns == 25.25138s
+   Insertion duration: 15346972000 ns == 15.15346s
+   MergeSort duration: 59325000 ns == 0.59s
+
+Arreglo D | 200000
+
+   Selection duration: 44487667000 ns == 44.44487s
+   Insertion duration: 55043738000 ns == 55.55043s
+   MergeSort duration: 74462000 ns == 0.74s

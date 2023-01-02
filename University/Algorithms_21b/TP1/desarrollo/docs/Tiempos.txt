@@ -1,0 +1,124 @@
+1.
+Arreglo A | 50000
+                       s        ms             ns
+   Selection time:     2      2958     2958508641
+   Insertion time:     0       325      325484524
+   MergeSort time:     0         9        9672424
+   HeapSort  time:     0         2        2663198
+   QuickSort time:     0         2        2761427
+   RadixSort time:     0         0         490458
+
+Arreglo B | 100000
+                       s        ms             ns
+   Selection time:    12     12270    12270396052
+   Insertion time:     1      1277     1277524505
+   MergeSort time:     0        20       20201723
+   HeapSort  time:     0         5        5883365
+   QuickSort time:     0         5        5799627
+   RadixSort time:     0         0         965265
+
+Arreglo C | 150000
+                       s        ms             ns
+   Selection time:    27     27590    27590998000
+   Insertion time:     2      2860     2860299726
+   MergeSort time:     0        30       30227194
+   HeapSort  time:     0        10       10263585
+   QuickSort time:     0        10       10101532
+   RadixSort time:     0         1        1237381
+
+Arreglo D | 200000
+                       s        ms             ns
+   Selection time:    48     48744    48744923744
+   Insertion time:     5      5076     5076137023
+   MergeSort time:     0        40       40236650
+   HeapSort  time:     0        20       20210726
+   QuickSort time:     0        12       12440261
+   RadixSort time:     0         2        2399381
+
+
+
+
+-----------------------------------------------------------
+
+
+
+2.
+Arreglo A | 50000
+                       s        ms             ns
+   Selection time:     3      3056     3056312992
+   Insertion time:     0       328      328989381
+   MergeSort time:     0         9        9932128
+   HeapSort  time:     0         3        3035917
+   QuickSort time:     0         2        2833120
+   RadixSort time:     0         0         576185
+
+Arreglo B | 100000
+                       s        ms             ns
+   Selection time:    12     12065    12065915175
+   Insertion time:     1      1358     1358318031
+   MergeSort time:     0        20       20706694
+   HeapSort  time:     0         6        6282871
+   QuickSort time:     0         6        6075375
+   RadixSort time:     0         1        1020569
+
+Arreglo C | 150000
+                       s        ms             ns
+   Selection time:    28     28012    28012775397
+   Insertion time:     2      2934     2934184065
+   MergeSort time:     0        33       33598721
+   HeapSort  time:     0        10       10947035
+   QuickSort time:     0         9        9025524
+   RadixSort time:     0         1        1222679
+
+Arreglo D | 200000
+                       s        ms             ns
+   Selection time:    50     50226    50226822541
+   Insertion time:     5      5448     5448096908
+   MergeSort time:     0        41       41096448
+   HeapSort  time:     0        14       14530739
+   QuickSort time:     0        12       12217829
+   RadixSort time:     0         2        2034269
+
+
+
+
+-----------------------------------------------------------
+
+
+
+3.
+Arreglo A | 50000
+                       s        ms             ns
+   Selection time:     3      3094     3094785924
+   Insertion time:     0       321      321018305
+   MergeSort time:     0         9        9715321
+   HeapSort  time:     0         2        2650228
+   QuickSort time:     0         2        2800735
+   RadixSort time:     0         1        1168979
+
+Arreglo B | 100000
+                       s        ms             ns
+   Selection time:    12     12225    12225986671
+   Insertion time:     1      1330     1330625373
+   MergeSort time:     0        20       20175692
+   HeapSort  time:     0         5        5867657
+   QuickSort time:     0         5        5805043
+   RadixSort time:     0         0         989110
+
+Arreglo C | 150000
+                       s        ms             ns
+   Selection time:    28     28602    28602472686
+   Insertion time:     2      2970     2970415535
+   MergeSort time:     0        31       31780164
+   HeapSort  time:     0        10       10185986
+   QuickSort time:     0         9        9460887
+   RadixSort time:     0         1        1275255
+
+Arreglo D | 200000
+                       s        ms             ns
+   Selection time:    50     50116    50116633232
+   Insertion time:     5      5768     5768167868
+   MergeSort time:     0        42       42708308
+   HeapSort  time:     0        18       18954010
+   QuickSort time:     0        13       13163267
+   RadixSort time:     0         3        3008953

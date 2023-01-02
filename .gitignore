@@ -1,0 +1,10 @@
+*.out
+*.exe
+*.o
+build/
+bin/
+doc/
+.DS_Store
+thumbs.db
+.vscode
+

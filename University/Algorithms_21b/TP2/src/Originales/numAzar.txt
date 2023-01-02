@@ -1,0 +1,15 @@
+  random_device r;
+  mt19937 eng(r());
+  uniform_int_distribution<mt19937::result_type> dist6(0,2000000);
+  for(int i =0; i < 10; ++i){
+    cout << dist6(r) << "  "; 
+  }
+  cout << endl;
+
+  random_device dev;
+  mt19937 rng(dev());
+  uniform_int_distribution<mt19937::result_type> dis6(0,2000000);
+  for(int i =0; i < 10; ++i){
+    cout << dis6(rng) << "  "; 
+  }
+  cout << endl;

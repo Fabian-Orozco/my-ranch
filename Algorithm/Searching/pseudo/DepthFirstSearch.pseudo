@@ -1,0 +1,11 @@
+procedure depth_first_search(Graph, root):
+  let S be a stack
+  S.push(root)
+  // process(print) root
+  while S is not empty do
+    v = S.pop()
+    if v is not labeled as discovered then
+        label v as discovered
+        for all edges from v to w in G.adjacentEdges(v) do 
+            S.push(w)
+end procedure
