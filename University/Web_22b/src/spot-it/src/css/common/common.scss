@@ -1,0 +1,90 @@
+$purple: #8500FA;
+$yellow: #FACE0C;
+$green: #47FA0C;
+$dark-yellow: #AD9011;
+$dark-green: #38AD11;
+$dark-gray: rgb(40, 40, 40);
+$background: rgb(230, 230, 230);
+$medium-font: 2vw;
+$disconected: #B8B8B8;
+$connected: $green;
+$red: #FA1D1B;
+$cyan: #12E6E0;
+$pink: #F76CFF;
+$orange: #FA8E00;
+$gray: #A3A3A2;
+
+.box-container {
+  position: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  background-color: $background;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  margin: 0px;
+}
+
+/* Header navbar */
+.homeLogo img {
+  width: 11em;
+}
+
+.nav-item a {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.navbar-toggler-icon{
+  padding: 1.3em !important;
+}
+
+/* end Header navbar */
+.green-color {
+  color: $green;
+}
+
+.purple-color {
+  color: $purple;
+}
+
+.dark-yellow-color {
+  color: $dark-yellow;
+}
+
+.dark-gray-color {
+  color: $dark-gray;
+}
+
+.yellow-color {
+  color: $yellow;
+}
+
+.dark-green-color {
+  color: $dark-green;
+}
+
+.selectable-text-all {
+  user-select: all;
+}
+
+.selectable-text {
+  user-select: text;
+}
+
+.unselectable-text {
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: $yellow;
+  border-color: $yellow;
+  color: black;
+}
+
+.purple-background {
+  background-color: $purple;
+  border-color: $purple;
+}

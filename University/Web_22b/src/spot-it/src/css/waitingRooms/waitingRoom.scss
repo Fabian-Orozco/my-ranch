@@ -1,0 +1,95 @@
+@import "../common/common.scss";
+
+
+.red-color {
+  color: $red;
+}
+
+.cyan-color {
+  color: $cyan;
+}
+
+.pink-color {
+  color: $pink;
+}
+
+.orange-color {
+  color: $orange;
+}
+
+.gray-color {
+  color: $gray;
+}
+
+.box-container {
+  position: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  background-color: $background;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  margin: 0px;
+}
+
+p,h2 {
+  font-size: $medium-font;
+  padding: 0px;
+  margin: 0px;
+}
+
+#session-pin-text {
+  user-select: all;
+}
+
+.player-count-container {
+  padding: 3px 10px;
+  margin: 0px;
+}
+
+.player-count-container img{
+  width: 2vw;
+  height: auto;
+  margin-inline: 5px;
+}
+
+.player-count-container p{
+  padding: 0px;
+  margin: 0px;
+  font-size: $medium-font;
+  margin-inline: 5px;
+}
+
+#host-crown-icon {
+  margin-top: -27px;
+  margin-right: -27px;
+  width: 1.5vw;
+  z-index: 1;
+  position: relative;
+}
+
+.player-connection-dot {
+  font-size: 50px;
+  line-height: 0;
+  width: 30px;
+}
+
+.player-name {
+  display: inline-block;
+}
+
+.player-connected {
+  color: $connected;
+}
+
+.player-disconnected {
+  color: $disconected;
+}
+
+/* Javascript has to be used to change background on click */
+/* .star-button:active {
+  background-color: var(--yellow-color);
+  border-color: var(--yellow-color);
+} */

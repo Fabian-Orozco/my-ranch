@@ -1,0 +1,42 @@
+@import "../common/common.scss";
+
+/* welcome msg*/
+.Welcome-msg u:first-child {
+  color: $purple;
+}
+
+body {
+  overflow-x:hidden;
+}
+
+.Welcome-msg {
+  white-space: nowrap;
+  font-size: 5vw;
+  width: fit-content;
+}
+
+.Welcome-msg u:nth-child(3){ /*reestablece grosor de "spot it"*/
+  font-weight: 100px;
+}
+
+.dec-img-spot-it {
+  width: auto;
+}
+/*end welcome msg*/
+
+
+/*form*/
+.inputName {
+  font-size: $medium-font;
+
+}
+
+.row .sessions{
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+input::placeholder {
+  font-size: 1.3em;
+} 
+/*end form*/

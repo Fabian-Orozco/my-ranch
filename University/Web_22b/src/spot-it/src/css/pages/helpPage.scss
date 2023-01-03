@@ -1,0 +1,26 @@
+.help-icon {
+  height: calc(1.375rem + 1.5vw);
+}
+
+.arrow-icon {
+  height: calc(.7rem + 1vw);
+  align-self: center;
+}
+
+.help-box-container {
+  text-align: left;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30px;
+  min-width: 100%;
+  cursor: pointer;
+}
+
+.button-and-tittle {
+  display: flex;
+}
+
+.hiden {
+  display: none;
+}
