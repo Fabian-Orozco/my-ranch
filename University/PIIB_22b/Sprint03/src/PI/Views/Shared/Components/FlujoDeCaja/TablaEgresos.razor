@@ -1,0 +1,259 @@
+﻿@using PI.Handlers
+@using PI.Models
+@using PI.Services
+@using BlazorCleave
+@using BlazorCleave.Data
+@using System.Globalization
+
+<ul class="responsive-table">
+
+    @*Header*@
+    <li class="table-header sticky-top">
+        <div class="col col-1">
+            <p>Egresos</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 1</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 2</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 3</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 4</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 5</p>
+        </div>
+        <div class="col col-1">
+            <p>Mes 6</p>
+        </div>
+    </li>
+
+    @*Flujo de caja mensual*@
+    <FilaFlujoMensual flujoMensual=flujoMensual />
+
+    @*Totales*@
+    <li class="table-row-totales">
+        <div class="col col-1">
+            <p class="datos-calculados texto-nombres">Totales</p>
+        </div>
+        @foreach (var mes in meses) {      
+            <div class="col col-1">
+                @CalcularEgresoMensualTotal(mes)
+            </div>
+        }
+        
+    </li>
+
+    @*Inversion inicial*@
+    @if (estadoIniciado == false)
+    {
+        <li class="table-row">
+            <div class="col col-1">
+                <p class="datos-calculados texto-nombres">Inversión inicial</p>
+            </div>
+            @foreach (var mes in meses) 
+            {
+                <div class="col col-1">
+                        <Cleave NumeralType="NumeralTypes.Type.Thousand" InputType="InputType.Numeral"
+                        class="effect-1 text-center input-montos" value="@FormatManager.ToFormatoEstadistico(mes.InversionPorMes)"
+                        @onchange="n => mes.InversionPorMes = Convert.ToDecimal(n.Value.ToString())"
+                        @onfocusout="() => ActualizarInversionPorMes(mes)" />
+                        <span class="focus-border"></span>
+                </div>
+            }
+        </li>
+    }
+
+    @*Compras de contado*@
+    <li class="table-row">
+        <div class="col col-1">
+            <p class="datos-calculados texto-nombres">Compras de contado</p>
+        </div>
+        @foreach (var egresoActual in egresos.Where(t => t.Tipo == "contado"))
+        {
+            <div class="col col-1">
+                <Cleave NumeralType="NumeralTypes.Type.Thousand" InputType="InputType.Numeral"
+                    class="effect-1 text-center input-montos" value="@FormatManager.ToFormatoEstadistico(egresoActual.Monto)"
+                    @onchange="n => egresoActual.Monto = Convert.ToDecimal(n.Value.ToString())"
+                    @onfocusout="() => ActualizarEgreso(egresoActual)" />
+                <span class="focus-border"></span>
+            </div>
+        }
+    </li>
+
+    @*Compras a credito*@
+    <li class="table-row">
+        <div class="col col-1">
+            <p class="datos-calculados texto-nombres">Compras a crédito</p>
+        </div>
+        @foreach (var egresoActual in egresos.Where(t => t.Tipo == "credito"))
+        {
+            <div class="col col-1">
+                <Cleave NumeralType="NumeralTypes.Type.Thousand" InputType="InputType.Numeral"
+                    class="effect-1 text-center input-montos" value="@FormatManager.ToFormatoEstadistico(egresoActual.Monto)"
+                    @onchange="n => egresoActual.Monto = Convert.ToDecimal(n.Value.ToString())"
+                    @onfocusout="() => ActualizarEgreso(egresoActual)" />
+                <span class="focus-border"></span>
+            </div>
+        }
+    </li>
+
+    @*Otros egresos*@
+    <li class="table-row">
+        <div class="col col-1">
+            <p class="datos-calculados texto-nombres">Otros egresos</p>
+        </div>
+        @foreach (var egresoActual in egresos.Where(t => t.Tipo == "otros"))
+        {
+            <div class="col col-1">
+                <Cleave NumeralType="NumeralTypes.Type.Thousand" InputType="InputType.Numeral"
+                    class="effect-1 text-center input-montos" value="@FormatManager.ToFormatoEstadistico(egresoActual.Monto)"
+                    @onchange="n => egresoActual.Monto = Convert.ToDecimal(n.Value.ToString())"
+                    @onfocusout="() => ActualizarEgreso(egresoActual)" />
+                <span class="focus-border"></span>
+            </div>
+        }
+    </li>
+
+    @*Gastos fijos*@
+    @foreach (var gasto in gastosFijos)
+    {
+        <li class="table-row">
+            <div class="col col-1">
+                <p class="datos-calculados texto-nombres">@gasto.Nombre</p>
+            </div>
+            @for (var mes = 0; mes < meses.Count; mes++)
+            {
+                <div class="col col-1">
+                    <p class="datos-calculados">@FormatManager.ToFormatoEstadistico((gasto.Monto/12))</p>
+                </div>
+            }
+        </li>
+    }
+</ul>
+
+@code {
+    // lista con gastos fijos de la base
+    [Parameter]
+    public List<GastoFijoModel> gastosFijos { get; set; }
+
+    // lista con egresos de la base
+    [Parameter]
+    public List<EgresoModel> egresos { get; set; }
+
+    // Variable booleana que verifica el estado del analisis
+    [Parameter]
+    public bool estadoIniciado { get; set; }
+
+    // Variable que contiene el valor total de la inversion inicial
+    [Parameter]
+    public decimal inversionInicial { get; set; }
+
+    // Lista con los meses de la base 
+    [Parameter]
+    public List<MesModel> meses { get; set; }
+
+    // Lista con el monto monetario (decimal) del flujo mensual de cada mes.
+    [Parameter]
+    public List<string> flujoMensual { get; set; }
+
+    // Handler del flujo de caja
+    public FlujoDeCajaHandler flujoDeCajaHandler = new FlujoDeCajaHandler();
+
+    // Handler de la estructura organizativa
+    public EstructuraOrgHandler estructuraOrgHandler = new EstructuraOrgHandler();
+
+    // Array con la lista de gastos que pertenecen a la estructura organizativa
+    public string[] gastosEstructura = new string[] { "Salarios netos", "Prestaciones laborales", "Seguridad social", "Beneficios de empleados" };
+
+    // Metodo que calcula el total de los montos de los gastos fijos
+    public decimal CalcularTotalGastosFijos() 
+    {
+        decimal total = 0; 
+        foreach (GastoFijoModel gasto in gastosFijos)
+        {
+
+            total += gasto.Monto / 12;
+
+        }
+        return total; 
+    }
+
+    // Metodo que calcula el egreso mensual total segun el mes
+    public string CalcularEgresoMensualTotal(MesModel mes)
+    {
+        decimal total = 0;
+
+        decimal totalEgresos = flujoDeCajaHandler.ObtenerMontoTotalDeEgresosPorMes(mes);
+        decimal inversionInicialDelMes = mes.InversionPorMes;
+        decimal totalGastosFijos = CalcularTotalGastosFijos();
+
+        total = totalEgresos + inversionInicialDelMes + totalGastosFijos;
+
+        return FormatManager.ToFormatoEstadistico(total);
+    }
+
+    // Metodo que obtiene el total de las inversiones iniciales
+    public decimal ObtenerTotalInversiones()
+    {
+        return flujoDeCajaHandler.ObtenerMontoTotalInversiones(egresos[0].FechaAnalisis);
+    }
+
+    // Metodo que obtiene a diferencia entre el valor anterior y el valor actual de la inversion por mes 
+    public decimal ObtenerDiferencia(decimal ingresado, decimal actual) {
+        decimal diferencia = ingresado - actual;
+
+        return diferencia;
+    }
+
+    // Metodo que actualiza la inversion por mes 
+    public void ActualizarInversionPorMes(MesModel mes) {
+
+        decimal inversionActual = flujoDeCajaHandler.ObtenerInversionDelMes(mes);
+
+        decimal totalInversiones = 0; 
+
+        if (inversionActual > 0) {
+            decimal diferencia = ObtenerDiferencia(mes.InversionPorMes, inversionActual);
+            totalInversiones = ObtenerTotalInversiones() + diferencia; 
+        }
+        else if (inversionActual == 0 && mes.InversionPorMes>=0) {
+            totalInversiones = ObtenerTotalInversiones() + mes.InversionPorMes;
+        }
+
+        if (mes.InversionPorMes < 0){
+            mes.InversionPorMes = inversionActual;
+            totalInversiones = inversionInicial + 1;
+        }
+
+        if (inversionInicial >= totalInversiones) {
+            flujoDeCajaHandler.ActualizarInversionPorMes(mes);
+        }
+        else {
+            mes.InversionPorMes = inversionActual; 
+        }
+        // Actualiza la lista del flujo mensual.
+        flujoMensual = FlujoCajaService.ActualizarFlujosMensuales(meses);
+    }
+
+    // Metodo que actualiza un egreso
+    public void ActualizarEgreso(EgresoModel egreso)
+    {
+        if (egreso.Monto >= 0)
+        {
+            flujoDeCajaHandler.ActualizarEgreso(egreso);
+        }
+        else 
+        {
+            egreso.Monto = 0;
+            flujoDeCajaHandler.ActualizarEgreso(egreso);
+        }
+        // Actualiza la lista del flujo mensual.
+        flujoMensual = FlujoCajaService.ActualizarFlujosMensuales(meses);
+
+    }
+}

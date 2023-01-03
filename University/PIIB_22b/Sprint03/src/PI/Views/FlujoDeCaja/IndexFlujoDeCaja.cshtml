@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Components
+@using PI.Models
+@using PI.Handlers
+@using PI.Services
+
+@{
+    Layout = "~/Views/Shared/LayoutPasosAnalisis.cshtml";
+    String fechaAnalisis = ViewBag.fechaAnalisis.ToString("yyyy-MM-dd HH:mm:ss.fff");
+    decimal metaDeVentasMensual = ViewBag.MetaDeVentasMensual;
+    decimal inversionInicial = ViewBag.InversionInicial;
+    bool estadoIniciado = ViewBag.Iniciado;
+}
+
+
+<head>
+    @*<title>Análisis de rentabilidad</title>*@
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/FlujoDeCaja/flujoDeCajaStyles.css" />
+    <link rel="stylesheet" href="~/css/FlujoDeCaja/tablas.css" />
+</head>
+
+<body>
+    <div>
+        @Html.Partial("LayoutNombreEmpresa")
+    </div>
+
+    <div class="container-xl">
+
+        <div class="row fila-meta-inversion d-flex justify-content-center">
+
+            @*Meta de mensual de ventas*@
+            <div class="col-6 d-flex justify-content-center">
+                <label>Meta mensual de ventas</label>
+                <div class="dato-meta-inversion">
+                    <span>
+                        @FormatManager.ToFormatoEstadistico(metaDeVentasMensual)
+                    </span>
+                </div>
+            </div>
+
+            @*Inversion inicial*@
+            @if (estadoIniciado == false)
+            {
+                <div class="col-6 d-flex justify-content-center">
+                    <label>Inversion inicial</label>
+                    <div class="dato-meta-inversion">
+                        <span>
+                            @FormatManager.ToFormatoEstadistico(inversionInicial)
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @(
+            await Html.RenderComponentAsync<PI.Views.Shared.Components.FlujoDeCaja.TabsFlujoCaja>(RenderMode.ServerPrerendered, new { ingresos = ViewBag.Ingresos, meses = ViewBag.Meses, egresos = ViewBag.Egresos, gastosFijos = ViewBag.GastosFijos, estadoIniciado, inversionInicial, flujoMensual = ViewBag.flujoMensual })
+        )
+    </div>
+</body>

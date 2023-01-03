@@ -1,0 +1,24 @@
+﻿@model List<Object>
+@*
+    Html para la estructura orgranizativa.
+    Como este es dinamico del lado del cliente se utilzan componentes razor
+*@
+@{
+    Layout = "~/Views/Shared/LayoutPasosAnalisis.cshtml";
+}
+
+<head>
+    @*refrencias de de css y otros*@
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML template</title>
+    <link rel="stylesheet" href="~/css/est_org.css">
+    <link rel="stylesheet" href="~/css/estructuraOrg/PuestoParcialView.css">
+</head>
+
+@Html.Partial("LayoutNombreEmpresa")
+
+
+@(
+await Html.RenderComponentAsync<PI.Views.Shared.Components.SeccionPuestos>(RenderMode.ServerPrerendered, new { Puestos = Model[0], Config = Model[1], FechaAnalisis = ViewBag.FechaAnalisis})
+         )

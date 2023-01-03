@@ -1,0 +1,61 @@
+﻿<!-- models -->
+@{
+    Layout = "~/Views/Shared/LayoutPasosAnalisis.cshtml";
+}
+<!-- head -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- links -->
+    <link rel="stylesheet" href="~/css/negocio/FormAgregarNegocio.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--  -->
+    <title>NuevoNegocio</title>
+</head>
+<!-- body -->
+<body>
+    <div class="flexbox-container-nuevoNegocio">
+        <div class="flexbox-item flexbox-item-nuevoNegocio">
+            <h2 class="fw-bold mt-2">Nuevo negocio</h2>
+            <form asp-controller="Negocio" asp-action="agregarNegocio_BD" method="get">
+                <br>
+                <!--text Nombre del negocio-->
+                <div class="NombreNegocio">
+                    <div>Nombre del negocio</div>
+                    <input type="text" name="nombreNegocio" placeholder="Panadería Tiquicia" required maxlength="20">
+                </div>
+                <br>
+                <!--radiobutton Emprendimiento-Ya iniciado-->
+                <div class="TipoNegocio d-flex flex-column justify-content-center align-items-center">
+                    <div>Estado del negocio</div>
+                    <div class="boxRadio d-flex justify-content-center align-items-center flex-column">
+                        <div>
+                            <input id="tipoNoIniciado" name="tipoNegocio" type="radio" value="Emprendimiento" required />
+                            <label for="tipoNoIniciado">No iniciado</label>
+                        </div>
+                        <div>
+                            <input id="tipoEnMarcha" name="tipoNegocio" type="radio" value="Ya iniciado" required />
+                            <label for="tipoEnMarcha">En marcha</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!--submit Aceptar y cancelar (botones)-->
+                <div class="d-flex justify-content-center align-items-center">
+                    <!-- Guarda la información ingresada en la base de datos-->
+                    <input class="btn btn-primary m-1 " type="submit" value="Aceptar">
+                    <!-- Retorna la página de los negocios creados -->
+                    <a class="btn btn-secondary m-1" asp-controller="Negocio" asp-action="Index">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<!-- footer -->
+
+<!-- end -->
+
+</html>

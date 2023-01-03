@@ -1,0 +1,175 @@
+div {
+    font-family: sans-serif;
+}
+
+html, body, main {
+    padding: 0;
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+main {
+    min-height: 100vh;
+}
+
+
+    #encabezado {
+        width: 100%;
+        padding-top: 10px;
+        height: 100px;
+        box-shadow: 2px 2px 10px rgba(158, 158, 158, 0.5);
+        margin: 0px 5px 0px 0px;
+    }
+
+    #encabezado .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+#logo {
+    width: fit-content;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo a {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+}
+
+#logo img{
+    width: 150px
+}
+
+
+#botones_der {
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    flex-direction: row-reverse;
+    margin-right: 10px;
+}
+
+#botones_der div{
+    margin: 10px;
+}
+
+#boton_usuario {
+    padding: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#boton_usuario a {
+    width: fit-content;
+    height: 40px;
+    display: block;
+    padding: 0px;
+}
+
+#boton_usuario img {
+    width: 40px
+}
+
+#boton_ajustes {
+    padding: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#boton_ajustes a {
+    width: fit-content;
+    height: 40px;
+    padding: 0px;
+    display: block;
+    margin: 
+}
+
+#boton_ajustes img {
+    width: 40px
+}
+
+#boton_negocios {
+    padding: 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+#boton_negocios a {
+    font-size: 26px;
+}
+
+#nombre_seccion {
+    width: fit-content;
+    top: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+
+div a {
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+footer {
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  line-height: 20px;
+  margin-top: 3em;
+  background-color: #005db9;
+  color: white;
+  padding-block-start: 1em;
+  padding-block-end: 1em;
+  margin: 0px;
+}
+
+.container-contacts {
+  text-align: left;
+}
+.contact:hover {
+  text-decoration: underline;
+}
+.contact a {
+  font-size: 0.9em;
+  padding: 0px;
+  margin: 0px;
+  padding-block-end: 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  font-size: 0.9em;
+  padding: 0px;
+  margin: 0px;
+  padding-block-end: 1em;
+  color: white;
+  text-decoration: none;
+}
+
+.logout-button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    font-size: 26px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+
+.logout-button:hover {
+    color: #0d6efd; 
+}

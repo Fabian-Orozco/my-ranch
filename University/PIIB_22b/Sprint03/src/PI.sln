@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PI", "PI\PI.csproj", "{46329975-1239-4E6D-B20B-35DB240B41B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unit_tests", "unit_tests\unit_tests.csproj", "{9A759756-7C67-40D8-9DE4-4BB49E85F036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "functional_tests", "functional_tests\functional_tests.csproj", "{1E8FA35D-F632-4280-823A-004C5E4F31E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46329975-1239-4E6D-B20B-35DB240B41B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46329975-1239-4E6D-B20B-35DB240B41B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46329975-1239-4E6D-B20B-35DB240B41B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46329975-1239-4E6D-B20B-35DB240B41B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A759756-7C67-40D8-9DE4-4BB49E85F036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A759756-7C67-40D8-9DE4-4BB49E85F036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A759756-7C67-40D8-9DE4-4BB49E85F036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A759756-7C67-40D8-9DE4-4BB49E85F036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E8FA35D-F632-4280-823A-004C5E4F31E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8FA35D-F632-4280-823A-004C5E4F31E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8FA35D-F632-4280-823A-004C5E4F31E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8FA35D-F632-4280-823A-004C5E4F31E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9661A039-F5B5-42AB-961E-35A77240F069}
+	EndGlobalSection
+EndGlobal
