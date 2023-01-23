@@ -1,0 +1,24 @@
+// solución válida:
+procedure main:
+  shared a1_ready := create_semaphore(0)
+  shared b1_ready := create_semaphore(0)
+  create_thread(thread_a)
+  create_thread(thread_b)
+end procedure
+
+procedure thread_a:
+  statement a1
+  signal(a1_ready)
+  wait(b1_ready)
+  statement a2
+end procedure
+
+procedure thread_b:
+  statement b1
+  wait(a1_ready)          // cambio respecto a linea siguiente
+                          // es menos eficiente que la solución 1
+                          // porque b avisa luego que está listo por lo que a1 se ejecuta un poco después
+
+  signal(b1_ready)
+  statement b2
+end procedure

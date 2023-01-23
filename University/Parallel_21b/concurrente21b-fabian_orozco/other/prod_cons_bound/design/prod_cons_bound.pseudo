@@ -1,0 +1,47 @@
+procedure main(argc, argv[]):
+  if argc = 7 then
+    shared buffer_capacity := integer(argv[1])
+    shared buffer as array of buffer_capacity of float
+    shared rounds := integer(argv[2])
+    shared producer_min_sleep := integer(argv[3])
+    shared producer_max_sleep := integer(argv[4])
+    shared consumer_min_sleep := integer(argv[5])
+    shared consumer_max_sleep := integer(argv[6])
+
+    shared can_produce := create_semaphore(buffer_capacity)
+    shared can_consume := create_semaphore(0) // patrón de aviso
+
+    create_threads(1, produce)
+    create_threads(1, consume)
+  end if
+end procedure
+
+procedure produce:
+  declare count := 0
+  for round := 1 to rounds do
+    for index := 0 to buffer_capacity do // por cada slot del buffer
+      // hay espacio libre en el buffer?
+      wait(can_produce) // esperar si el semáforo está negativo y también decremento
+      sleep(random_between(producer_min_sleep, producer_max_sleep))
+      buffer[index] := ++count // condición de carrera con "consume"
+      print("Produced ", buffer[index])
+      signal(can_consume) // le avisa al consumidor que puede consumir
+    end for
+  end for
+end procedure
+
+procedure consume:
+  for round := 1 to rounds do
+    for index := 0 to buffer_capacity do
+      wait(can_consume)
+      value := buffer[index]
+      sleep(random_between(consumer_min_sleep, consumer_max_sleep))
+      print("Consumed ", value)
+      signal(can_produce) // le avisa al productor de que hay un espacio para producir
+    end for
+  end for
+end procedure
+
+function random_between(min, max):
+  return min + rand() % (max - min)
+end function

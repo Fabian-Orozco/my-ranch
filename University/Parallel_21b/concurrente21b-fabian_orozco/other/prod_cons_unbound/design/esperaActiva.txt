@@ -1,0 +1,27 @@
+
+procedure consume2:
+  // iteramos siempre (arreglada la condición de carrera).
+  while true do // quedan productos por consumir?                --------------------
+    lock(can_access_consumed_count) // accede al puente angosto
+      if consumed_count < unit_count then // cuanto hemos consumido del total?
+        consumed_count := consumed_count + 1
+      else 
+        break while
+      end if
+    unlock(can_access_consumed_count)
+    
+    // región crítica: código serial (exclusión mutua con mutex).
+    lock(can_access_queue)
+      if is_empty(queue) then                                       ------------------
+        consumed_count := consumed_count - 1
+      else
+        declare my_unit := dequeue(queue) // saco de la cola esa unidad. esta operación es muy rápida de hacer, por eso es válido hacer con mutex (no es el trabajo pesado).
+        print("\tConsuming ", my_unit) // reporto que la estoy consumiendo
+        delay(random_between(consumer_min_delay, consumer_max_delay)) // pone a consumirla
+      end if
+    unlock(can_access_queue)
+
+  end while
+end procedure
+
+ciclo esperando repetitivamente hasta que la cola no esté vacía ( está esperando en CPU )

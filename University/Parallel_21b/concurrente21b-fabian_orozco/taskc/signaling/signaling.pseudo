@@ -1,0 +1,32 @@
+// Modifique los códigos de los hilos para que la instrucción a1 se ejecute siempre antes que la instrucción b1. Esto es, que un hilo envíe una señal (aviso) a otro (signaling).
+
+procedure main:
+  create_thread(thread_a)
+  create_thread(thread_b)
+end procedure
+
+procedure thread_a:
+  statement a1
+end procedure
+
+procedure thread_b:
+  statement b1
+end procedure
+
+// ---------------------Patrón básico--------------------
+
+procedure main:
+  shared a1_ready := create_semaphore(0) // can_run_b1
+  create_thread(thread_a)
+  create_thread(thread_b)
+end procedure
+
+procedure thread_a:
+  statement a1
+  signal(a1_ready)
+end procedure
+
+procedure thread_b:
+  wait(a1_ready)
+  statement b1
+end procedure

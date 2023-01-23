@@ -1,0 +1,78 @@
+procedure main(argc, argv[]):
+  declare and initialize shared_data
+  analyze_arguments(argc, argv[])
+  // Vehicle capacity in each segment of the roundabout
+  shared constant segment_capacity = read_integer()
+
+  initialize roundabout_sems
+  // Create vehicles
+  while can_read(stdin) do
+    declare const enter_from = read_char(stdin)
+    declare const exit_to = read_char(stdin)
+    rank += 1
+    create_thread(vehicle, enter_from, exit_to)
+  end while
+  print routes
+end procedure
+
+procedure analyze_arguments(argc, argv[]) do 
+  if argc >= 3 then
+    drive_min_delay := integer(argv[1])
+    drive_max_delay := integer(argv[2])
+  end if
+  if argc >= 4 then
+    verbose := argv[3] = "-v"
+      verbose = true
+  end if
+end procedure
+
+procedure print_route(outputs) do 
+  for current_rank := 0 to thread_count do 
+    print current_rank + outputs[current_rank].front() + outputs[current_rank].back() + ": "
+    print outputs
+  end for
+end procedure
+
+procedure vehicle(rank, enter_from, exit_to, my_route):
+  current_sem := index_roundabout_sems[enter_from]
+  declare integer next := current_sem + 1 % 4
+  do
+    current_sem = next
+    wait(roundabout_sems[current_sem])
+    drive()
+    if verbose = true do 
+      print rank + ": " + current_sem
+    end if
+    signal(roundabout_sems[current_sem])
+    my_route += " " + current_sem
+  while current_sem not_equal_to exit_to
+  wait(can_print)
+  outputs[rank].push_back(my_route)
+end procedure
+
+procedure drive()
+  declare const range = drive_max_delay - drive_min_delay
+  declare duration := drive_min_delay
+  if range > 0 then
+    duration += rand() % range
+  end if
+  sleep(duration)
+end procedure
+
+structs:
+  shared drive_min_delay := 0
+  shared drive_max_delay := 0
+  shared verbose := false
+  shared outputs := vector  // string with the routes of all vehicle
+  shared can_print as semaphore(1)
+  // vector of semaphores: [0] = N, [1] = O, [2] = S, [3] = E
+  shared roundabout_sems := vector[4]  // sems
+  for sem_rank := 0 to 3 inclusive do
+    roundabout_sems[sem_rank] := push_back(segment_capacity) // multiplex pattern
+  end for
+end structs
+
+private_data:
+  declare private string my_route := ""  // char
+  declare private integer rank := 0  // inicia en 0
+end private_data

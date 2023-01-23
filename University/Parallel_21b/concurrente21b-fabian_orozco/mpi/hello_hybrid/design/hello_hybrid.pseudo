@@ -1,0 +1,18 @@
+procedure main:
+  print "Hello from main thread of process ",process_number, " of " \
+    , process_count," on ", process_hostname
+end procedure
+
+procedure main(argc, argv[])
+  // create thread_count as result of converting argv[1] to integer
+  declare thread_count := integer(argv[1])
+  for thread_number := 0 to thread_count do
+    create_threads(greet, thread_number)
+  end for
+  print "Hello from main thread of process ",process_number, " of " \
+    , process_count," on ", process_hostname
+end procedure
+
+procedure greet(thread_number)
+  print "Hello from secondary thread", thread_number
+end procedure

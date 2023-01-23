@@ -1,0 +1,20 @@
+// Agregue semáforos al pseudocódigo siguiente para forzar a que los incrementos en los hilos se hagan con exclusión mutua.
+
+procedure main:
+  shared can_acces_count := create_semaphore(1)
+  shared count := 0
+  create_thread(thread_a)
+  create_thread(thread_b)
+end procedure
+
+procedure thread_a:
+  wait(can_acces_count)
+  count := count + 1
+  signal(can_acces_count)
+end procedure
+
+procedure thread_b:
+  wait(can_acces_count)
+  count := count + 1
+  signal(can_acces_count)
+end procedure

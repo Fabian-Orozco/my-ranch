@@ -1,0 +1,7 @@
+Sem 7a
+
+ya la cola es thread-safe
+
+producer1: protejemos next_unit con control de concurrencia.
+
+size_t se ajusta al tamaño de la arquitectura. (se ajusta al máximo y se tiene un comportamiento más predecible).

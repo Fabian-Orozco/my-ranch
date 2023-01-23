@@ -1,0 +1,80 @@
+procedure main(argc, argv[]):
+  if argc = 8 then
+    shared unit_count := integer(argv[1]) // cantidad de unidades de trabajo
+    shared producer_count := integer(argv[2])
+    shared consumer_count := integer(argv[3])
+    shared producer_min_delay := integer(argv[4])
+    shared producer_max_delay := integer(argv[5])
+    shared consumer_min_delay := integer(argv[6])
+    shared consumer_max_delay := integer(argv[7])
+
+    shared queue := create_integer_queue()
+    shared can_access_queue := create_mutex()
+
+    shared next_unit := 0 // por donde van produciendo  
+    shared can_access_next_unit := create_mutex()
+
+    // retorna un arreglo de hilos
+    declare producers := create_threads(producer_count, produce) // team
+    declare consumers := create_threads(consumer_count, consume) // team
+
+    shared can_consume := create_semaphore(0)
+
+    join_threads(producers)
+
+    for index := 0 to consumer_count do
+      signal(can_consume)
+    end for
+
+    join_threads(consumers)
+  end if
+end procedure
+
+procedure produce1:
+    // iteramos siempre
+  while true do
+    declare my_unit := 0
+    lock(can_access_next_unit)
+      if next_unit < unit_count then // hay trabajo pendiente?
+        next_unit := next_unit + 1
+        my_unit := next_unit // "yo me encargo de producir esa proxima unidad de trabajo, la reservo"
+      else // no hay trabajo pendiente
+        unlock(can_access_next_unit)
+        break while
+      end if
+    unlock(can_access_next_unit)
+
+    delay(random_between(producer_min_delay, producer_max_delay)) // pone a producirla
+
+    //región crítica código serial.
+    lock(can_access_queue)
+      enqueue(queue, my_unit) // ya terminé, la pongo en cola. esta operación es muy rápida de hacer, por eso es válido hacer con mutex (no es el trabajo pesado).
+    unlock(can_access_queue)
+
+    print("Produced ", my_unit) // ya la produje, la reporto en la "bitácora"
+    signal(can_consume)
+
+  end while
+end procedure
+
+procedure consume2:
+  // iteramos siempre (arreglada la condición de carrera).
+  while true do // quedan productos por consumir?
+    wait(can_consume)
+    
+    // región crítica: código serial (exclusión mutua con mutex).
+    lock(can_access_queue)
+      if is_empty(queue) then // ya el trabajo se acabó
+         break while
+      end if
+      declare my_unit := dequeue(queue) // saco de la cola esa unidad. esta operación es muy rápida de hacer, por eso es válido hacer con mutex (no es el trabajo pesado).
+      unlock(can_access_queue)
+      print("\tConsuming ", my_unit) // reporto que la estoy consumiendo
+      delay(random_between(consumer_min_delay, consumer_max_delay)) // pone a consumirla
+    
+  end while
+end procedure
+
+function random_between(min, max):
+  return min + rand() % (max - min)
+end function

@@ -1,0 +1,14 @@
+build/
+bin/
+doc/
+.DS_Store
+thumbs.db
+*.o
+.vscode
+html/
+latex/
+tests_large/
+input014.txt
+output014.txt
+notas.txt
+src2
